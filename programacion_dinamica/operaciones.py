@@ -7,7 +7,7 @@ def operaciones(k):
         cant_operaciones[2] = 2
     for i in range(3, k + 1):
         if (i % 2) == 0:
-            cant_operaciones[i] = cant_operaciones[i // 2] + 1
+            cant_operaciones[i] = min(cant_operaciones[i // 2], cant_operaciones[i - 1]) + 1
         else:
             cant_operaciones[i] = cant_operaciones[i - 1] + 1
 
@@ -19,7 +19,6 @@ def obtener_operaciones(cant_operaciones, k, min_operaciones):
     i = k
     while i > 0:
         if cant_operaciones[i] == min_operaciones:
-            
             if (i % 2) == 0:
                 min_operaciones -= 1
                 i = i // 2
